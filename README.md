@@ -1,34 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">
+  Black Belt
+</h1>
 
-## Getting Started
+<p align="center">
+  <a href="#contexto-">Contexto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#tecnologias-">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#licença-">Licença</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#desenvolvedores-">Desenvolvedores</a>
+</p>
 
-First, run the development server:
+<div align="center">
+  <img src="https://img.shields.io/github/languages/top/blackbeltinc/blackbelt-frontend?color=blue" alt="License: MIT">
+  <img src="https://img.shields.io/badge/license-MIT-blue" alt="License: MIT">
+  <img src="https://img.shields.io/tokei/lines/github/blackbeltinc/blackbelt-frontend?color=blue&label=lines%20of%20code" alt="Lines of Code">
+  <img src="https://img.shields.io/github/repo-size/blackbeltinc/blackbelt-frontend?color=blue&label=size" alt="Size">
+</div>
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Contexto 📝
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Projeto desenvolvido para a matéria de Project Labs.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+A proposta do sistema é auxiliar um Mestre de Jiu-Jitsu a acompanhar a evolução dos seus alunos no dia-a-dia de treinos.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Tecnologias 💻
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- **Front-end**
 
-## Learn More
+  - React, utilizando Next.js e ChakraUI
 
-To learn more about Next.js, take a look at the following resources:
+## Licença 📃
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Este projeto está sob a licença MIT. Para mais detalhes, veja o arquivo [LICENSE](.github/LICENSE.md).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Desenvolvedores 👩‍💻
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+| Nome                              | Email                                                                       |
+| :-------------------------------- | :-------------------------------------------------------------------------- |
+| Bruno César Fontes Vieira         | [bruno.cfontes@souunit.com.br](mailto:bruno.cfontes@souunit.com.br)         |
+| Fabrizio Tavares Dantas Silvestre | [fabrizio.tavares@souunit.com.br](mailto:fabrizio.tavares@souunit.com.br)   |
+| Fernanda Amaral de Souza          | [fernanda.amaral00@souunit.com.br](mailto:fernanda.amaral00@souunit.com.br) |
+| José Richard Santos da Silva      | [jose.richard97@souunit.com.br](mailto:jose.richard97@souunit.com.br)       |
+| Lucas Santos Souza                | [lucas.santos00@souunit.com.br](mailto:lucas.santos00@souunit.com.br)       |
+| Natália Braga da Fonseca          | [natalia.braga@souunit.com.br](mailto:natalia.braga@souunit.com.br)         |
+| Natan Nascimento Oliveira Matos   | [natan.oliveira@souunit.com.br](mailto:natan.oliveira@souunit.com.br)       |
+| Natalie Pereira Macedo            | [natalie.pereira@souunit.com.br](mailto:natalie.pereira@souunit.com.br)     |
+| Pablo Vinicius Chaves Cortes      | [pablo.vinicius99@souunit.com.br](mailto:pablo.vinicius99@souunit.com.br)   |
