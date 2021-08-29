@@ -12,12 +12,14 @@ const colors = {
     text: '#444444',
     primary: '#5252a4',
     details: '#858585',
+    outline: '#c9c9c9',
   },
   dark: {
     bg: '#1f2029',
     text: '#e3e3e3',
     primary: '#7f7fd2',
     details: '#a7a7a7',
+    outline: '#4a4a4a',
   },
 };
 
