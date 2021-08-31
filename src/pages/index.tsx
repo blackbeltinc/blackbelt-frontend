@@ -17,7 +17,7 @@ import { RiMoonFill, RiSunFill } from 'react-icons/ri';
 import { TiLockClosed, TiUser } from 'react-icons/ti';
 
 export default function Login() {
-  const { colorMode, toggleColorMode } = useColorMode();
+  const { toggleColorMode } = useColorMode();
 
   const [revealPassword, setRevealPassword] = useState(false);
   function toggleRevealPassword() {
@@ -42,7 +42,7 @@ export default function Login() {
           border={['0px', '1px']}
           borderColor={[
             'transparent',
-            useColorModeValue('light.outline', 'dark.outline'),
+            useColorModeValue('gray.200', 'gray.500'),
           ]}
           boxShadow={['none', 'base']}
           borderRadius="xl"
@@ -51,7 +51,7 @@ export default function Login() {
           <Heading
             alignSelf="center"
             mb="16"
-            color={useColorModeValue('light.primary', 'dark.primary')}
+            color={useColorModeValue('brand.500', 'brand.200')}
           >
             BlackBelt
           </Heading>
@@ -60,7 +60,7 @@ export default function Login() {
               <FormLabel
                 htmlFor="email"
                 fontWeight="bold"
-                color={useColorModeValue('light.primary', 'dark.primary')}
+                color={useColorModeValue('brand.500', 'brand.200')}
               >
                 EMAIL
               </FormLabel>
@@ -71,12 +71,12 @@ export default function Login() {
                 borderBottom="1px"
                 p="1"
                 fontSize="16px"
-                borderColor={useColorModeValue('light.details', 'dark.details')}
+                borderColor={useColorModeValue('gray.400', 'gray.300')}
               >
                 <Icon
                   as={TiUser}
                   fontSize="24px"
-                  color={useColorModeValue('light.primary', 'dark.primary')}
+                  color={useColorModeValue('brand.500', 'brand.200')}
                 />
                 <Input
                   ml="2"
@@ -91,7 +91,7 @@ export default function Login() {
               <FormLabel
                 htmlFor="name"
                 fontWeight="bold"
-                color={useColorModeValue('light.primary', 'dark.primary')}
+                color={useColorModeValue('brand.500', 'brand.200')}
               >
                 SENHA
               </FormLabel>
@@ -102,12 +102,12 @@ export default function Login() {
                 borderBottom="1px"
                 p="1"
                 fontSize="16px"
-                borderColor={useColorModeValue('light.details', 'dark.details')}
+                borderColor={useColorModeValue('gray.400', 'gray.300')}
               >
                 <Icon
                   as={TiLockClosed}
                   fontSize="24px"
-                  color={useColorModeValue('light.primary', 'dark.primary')}
+                  color={useColorModeValue('brand.500', 'brand.200')}
                 />
                 <Input
                   ml="2"
@@ -121,7 +121,11 @@ export default function Login() {
                     <Icon
                       as={revealPassword ? AiFillEye : AiOutlineEye}
                       fontSize="24"
-                      color={useColorModeValue('light.details', 'dark.details')}
+                      color={
+                        revealPassword
+                          ? useColorModeValue('brand.500', 'brand.200')
+                          : useColorModeValue('gray.400', 'gray.300')
+                      }
                     />
                   }
                   size="smaller"
@@ -137,29 +141,20 @@ export default function Login() {
             variant="link"
             fontWeight="regular"
             mt="2"
-            color={useColorModeValue('light.primary', 'dark.primary')}
+            colorScheme="brand"
             fontSize="smaller"
             alignSelf="end"
           >
             Esqueceu sua senha?
           </Button>
-          <Button
-            type="submit"
-            mt="16"
-            size="lg"
-            color={useColorModeValue('light.bg', 'dark.bg')}
-            bg={useColorModeValue('light.primary', 'dark.primary')}
-          >
+          <Button type="submit" mt="16" size="lg" colorScheme="brand">
             Entrar
           </Button>
         </Flex>
       </Flex>
       <IconButton
         icon={
-          <Icon
-            as={colorMode === 'light' ? RiMoonFill : RiSunFill}
-            fontSize="24"
-          />
+          <Icon as={useColorModeValue(RiMoonFill, RiSunFill)} fontSize="24" />
         }
         mt="auto"
         ml="auto"

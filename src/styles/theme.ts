@@ -7,19 +7,21 @@ const config: ThemeConfig = {
 };
 
 const colors = {
-  light: {
-    bg: '#fafafa',
-    text: '#444444',
-    primary: '#5252a4',
-    details: '#858585',
-    outline: '#c9c9c9',
+  brand: {
+    200: '#7f7fd2',
+    500: '#5252a4',
   },
-  dark: {
-    bg: '#1f2029',
-    text: '#e3e3e3',
-    primary: '#7f7fd2',
-    details: '#a7a7a7',
-    outline: '#4a4a4a',
+  gray: {
+    50: '#fafafa', // light mode background
+    100: '#e3e3e3', // dark mode text
+    200: '#c9c9c9',
+    300: '#a7a7a7',
+    400: '#858585',
+    500: '#4a4a4a',
+    600: '#444444', // light mode text
+    700: '#1F2029',
+    800: '#181B23', // dark mode background
+    900: '#13161c',
   },
 };
 
@@ -31,8 +33,8 @@ const fonts = {
 const styles = {
   global: (props: StyleProps) => ({
     body: {
-      color: mode('light.text', 'dark.text')(props),
-      bg: mode('light.bg', 'dark.bg')(props),
+      color: mode('gray.600', 'gray.100')(props),
+      bg: mode('gray.50', 'gray.800')(props),
     },
   }),
 };
