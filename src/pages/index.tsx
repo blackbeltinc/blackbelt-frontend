@@ -12,7 +12,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { useState } from 'react';
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { AiFillEye, AiOutlineEye } from 'react-icons/ai';
 import { RiMoonFill, RiSunFill } from 'react-icons/ri';
 import { TiLockClosed, TiUser } from 'react-icons/ti';
 
@@ -119,7 +119,7 @@ export default function Login() {
                 <IconButton
                   icon={
                     <Icon
-                      as={revealPassword ? AiOutlineEye : AiOutlineEyeInvisible}
+                      as={revealPassword ? AiFillEye : AiOutlineEye}
                       fontSize="24"
                       color={useColorModeValue('light.details', 'dark.details')}
                     />
