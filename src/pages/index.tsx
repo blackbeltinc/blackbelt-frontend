@@ -42,7 +42,10 @@ export default function Login() {
         >
           <Heading as="h1">
             <Image
-              src={useColorModeValue('/logo-light.svg', '/logo-dark.svg')}
+              src={useColorModeValue(
+                'images/logo-light.svg',
+                'images/logo-dark.svg',
+              )}
               alt="BlackBelt"
               mb="16"
               w="220px"

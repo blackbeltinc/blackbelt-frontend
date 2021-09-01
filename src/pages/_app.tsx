@@ -1,13 +1,11 @@
 import { AppProps } from 'next/app';
-import Head from 'next/head';
 import { Chakra } from '../components/ChakraWrapper';
+import { Meta } from '../components/Meta';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Chakra>
-      <Head>
-        <title>BlackBelt</title>
-      </Head>
+      <Meta />
       <Component {...pageProps} />
     </Chakra>
   );
