@@ -3,6 +3,7 @@ import {
   Flex,
   FormControl,
   FormLabel,
+  Heading,
   Icon,
   IconButton,
   Image,
@@ -48,24 +49,25 @@ export default function Login() {
           borderRadius="xl"
           flexDir="column"
         >
-          <Image
-            src={useColorModeValue('/logo-light.svg', '/logo-dark.svg')}
-            alt="Logo da BlackBelt"
-            mb="16"
-            w="220px"
-            mx="auto"
-          />
+          <Heading as="h1">
+            <Image
+              src={useColorModeValue('/logo-light.svg', '/logo-dark.svg')}
+              alt="BlackBelt"
+              mb="16"
+              w="220px"
+              h="40px"
+              mx="auto"
+            />
+          </Heading>
           <Stack spacing="6">
-            <FormControl>
+            <FormControl id="email">
               <FormLabel
-                htmlFor="email"
                 fontWeight="bold"
                 color={useColorModeValue('blackbelt.500', 'blackbelt.200')}
               >
                 EMAIL
               </FormLabel>
               <Flex
-                as="label"
                 flex="1"
                 alignSelf="center"
                 borderBottom="1px"
@@ -80,23 +82,20 @@ export default function Login() {
                 />
                 <Input
                   ml="2"
-                  name="email"
                   type="email"
                   variant="unstyled"
                   placeholder="digite seu e-mail"
                 />
               </Flex>
             </FormControl>
-            <FormControl>
+            <FormControl id="password">
               <FormLabel
-                htmlFor="name"
                 fontWeight="bold"
                 color={useColorModeValue('blackbelt.500', 'blackbelt.200')}
               >
                 SENHA
               </FormLabel>
               <Flex
-                as="label"
                 flex="1"
                 alignSelf="center"
                 borderBottom="1px"
@@ -111,7 +110,6 @@ export default function Login() {
                 />
                 <Input
                   ml="2"
-                  name="password"
                   type={revealPassword ? 'text' : 'password'}
                   variant="unstyled"
                   placeholder="digite sua senha"
@@ -161,7 +159,7 @@ export default function Login() {
         m="4"
         variant="unstyled"
         size="sm"
-        aria-label="Open navigation"
+        aria-label="Toggle color mode"
         onClick={toggleColorMode}
       />
     </Flex>
