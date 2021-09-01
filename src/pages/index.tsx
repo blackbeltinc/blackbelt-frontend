@@ -141,7 +141,7 @@ export default function Login() {
             mt="2"
             colorScheme="blackbelt"
             fontSize="smaller"
-            alignSelf="end"
+            ml="auto"
           >
             Esqueceu sua senha?
           </Button>
