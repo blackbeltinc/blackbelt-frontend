@@ -1,5 +1,5 @@
 <h1 align="center">
-  Black Belt
+  BlackBelt
 </h1>
 
 <p align="center">
@@ -30,7 +30,7 @@ A proposta do sistema é auxiliar um Mestre de Jiu-Jitsu a acompanhar a evoluç�
 
 ## Licença 📃
 
-Este projeto está sob a licença MIT. Para mais detalhes, veja o arquivo [LICENSE](.github/LICENSE.md).
+Este projeto está sob a licença MIT. Para mais detalhes, veja o arquivo [LICENSE](LICENSE).
 
 ## Desenvolvedores 👩‍💻
 
