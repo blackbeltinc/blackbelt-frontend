@@ -44,6 +44,5 @@ const theme = extendTheme({
   colors,
   styles,
   fonts,
-});
 
 export default theme;
