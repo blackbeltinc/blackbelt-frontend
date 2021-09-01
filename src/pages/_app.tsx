@@ -1,31 +1,17 @@
-import {
-  ChakraProvider,
-  cookieStorageManager,
-  localStorageManager,
-} from '@chakra-ui/react';
 import { AppProps } from 'next/app';
-import theme from '../styles/theme';
+import Head from 'next/head';
+import { Chakra } from '../components/ChakraWrapper';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const colorModeManager =
-    typeof pageProps.cookies === 'string'
-      ? cookieStorageManager(pageProps.cookies)
-      : localStorageManager;
-
   return (
-    <ChakraProvider theme={theme} colorModeManager={colorModeManager}>
-      <title>BlackBelt</title>
+    <Chakra>
+      <Head>
+        <title>BlackBelt</title>
+      </Head>
       <Component {...pageProps} />
-    </ChakraProvider>
+    </Chakra>
   );
 }
 
-export function getServerSideProps({ req }) {
-  return {
-    props: {
-      cookies: req.headers.cookie ?? '',
-    },
-  };
-}
-
 export default MyApp;
+export { getServerSideProps } from '../components/ChakraWrapper';
