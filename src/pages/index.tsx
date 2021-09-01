@@ -1,29 +1,20 @@
 import {
   Button,
   Flex,
-  FormControl,
-  FormLabel,
   Heading,
   Icon,
   IconButton,
   Image,
-  Input,
   Stack,
   useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { useState } from 'react';
-import { AiFillEye, AiOutlineEye } from 'react-icons/ai';
 import { RiMoonFill, RiSunFill } from 'react-icons/ri';
 import { TiLockClosed, TiUser } from 'react-icons/ti';
+import { Input } from '../components/Input';
 
 export default function Login() {
   const { toggleColorMode } = useColorMode();
-
-  const [revealPassword, setRevealPassword] = useState(false);
-  function toggleRevealPassword() {
-    setRevealPassword(!revealPassword);
-  }
 
   return (
     <Flex w="100vw" h="100vh" direction="column">
@@ -60,80 +51,20 @@ export default function Login() {
             />
           </Heading>
           <Stack spacing="6">
-            <FormControl id="email">
-              <FormLabel
-                fontWeight="bold"
-                color={useColorModeValue('blackbelt.500', 'blackbelt.200')}
-              >
-                EMAIL
-              </FormLabel>
-              <Flex
-                flex="1"
-                alignSelf="center"
-                borderBottom="1px"
-                p="1"
-                fontSize="16px"
-                borderColor={useColorModeValue('gray.400', 'gray.300')}
-              >
-                <Icon
-                  as={TiUser}
-                  fontSize="24px"
-                  color={useColorModeValue('blackbelt.500', 'blackbelt.200')}
-                />
-                <Input
-                  ml="2"
-                  type="email"
-                  variant="unstyled"
-                  placeholder="digite seu e-mail"
-                />
-              </Flex>
-            </FormControl>
-            <FormControl id="password">
-              <FormLabel
-                fontWeight="bold"
-                color={useColorModeValue('blackbelt.500', 'blackbelt.200')}
-              >
-                SENHA
-              </FormLabel>
-              <Flex
-                flex="1"
-                alignSelf="center"
-                borderBottom="1px"
-                p="1"
-                fontSize="16px"
-                borderColor={useColorModeValue('gray.400', 'gray.300')}
-              >
-                <Icon
-                  as={TiLockClosed}
-                  fontSize="24px"
-                  color={useColorModeValue('blackbelt.500', 'blackbelt.200')}
-                />
-                <Input
-                  ml="2"
-                  type={revealPassword ? 'text' : 'password'}
-                  variant="unstyled"
-                  placeholder="digite sua senha"
-                />
-                <IconButton
-                  icon={
-                    <Icon
-                      as={revealPassword ? AiFillEye : AiOutlineEye}
-                      fontSize="24"
-                      color={
-                        revealPassword
-                          ? useColorModeValue('blackbelt.500', 'blackbelt.200')
-                          : useColorModeValue('gray.400', 'gray.300')
-                      }
-                    />
-                  }
-                  size="smaller"
-                  variant="unstyled"
-                  onClick={toggleRevealPassword}
-                  mr="2"
-                  aria-label="show password"
-                />
-              </Flex>
-            </FormControl>
+            <Input
+              id="email"
+              label="EMAIL"
+              inputType="email"
+              icon={TiUser}
+              placeholder="digite seu e-mail"
+            />
+            <Input
+              id="password"
+              label="PASSWORD"
+              inputType="password"
+              icon={TiLockClosed}
+              placeholder="digite sua senha"
+            />
           </Stack>
           <Button
             variant="link"
