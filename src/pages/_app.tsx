@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ChakraProvider theme={theme} colorModeManager={colorModeManager}>
-      <title>Black Belt</title>
+      <title>BlackBelt</title>
       <Component {...pageProps} />
     </ChakraProvider>
   );

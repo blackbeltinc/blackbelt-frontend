@@ -3,9 +3,9 @@ import {
   Flex,
   FormControl,
   FormLabel,
-  Heading,
   Icon,
   IconButton,
+  Image,
   Input,
   Stack,
   useColorMode,
@@ -48,13 +48,13 @@ export default function Login() {
           borderRadius="xl"
           flexDir="column"
         >
-          <Heading
-            alignSelf="center"
+          <Image
+            src={useColorModeValue('/logo-light.svg', '/logo-dark.svg')}
+            alt="Logo da BlackBelt"
             mb="16"
-            color={useColorModeValue('blackbelt.500', 'blackbelt.200')}
-          >
-            BlackBelt
-          </Heading>
+            w="220px"
+            mx="auto"
+          />
           <Stack spacing="6">
             <FormControl>
               <FormLabel
