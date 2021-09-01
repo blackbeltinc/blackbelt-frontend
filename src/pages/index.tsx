@@ -51,7 +51,7 @@ export default function Login() {
           <Heading
             alignSelf="center"
             mb="16"
-            color={useColorModeValue('brand.500', 'brand.200')}
+            color={useColorModeValue('blackbelt.500', 'blackbelt.200')}
           >
             BlackBelt
           </Heading>
@@ -60,7 +60,7 @@ export default function Login() {
               <FormLabel
                 htmlFor="email"
                 fontWeight="bold"
-                color={useColorModeValue('brand.500', 'brand.200')}
+                color={useColorModeValue('blackbelt.500', 'blackbelt.200')}
               >
                 EMAIL
               </FormLabel>
@@ -76,7 +76,7 @@ export default function Login() {
                 <Icon
                   as={TiUser}
                   fontSize="24px"
-                  color={useColorModeValue('brand.500', 'brand.200')}
+                  color={useColorModeValue('blackbelt.500', 'blackbelt.200')}
                 />
                 <Input
                   ml="2"
@@ -91,7 +91,7 @@ export default function Login() {
               <FormLabel
                 htmlFor="name"
                 fontWeight="bold"
-                color={useColorModeValue('brand.500', 'brand.200')}
+                color={useColorModeValue('blackbelt.500', 'blackbelt.200')}
               >
                 SENHA
               </FormLabel>
@@ -107,7 +107,7 @@ export default function Login() {
                 <Icon
                   as={TiLockClosed}
                   fontSize="24px"
-                  color={useColorModeValue('brand.500', 'brand.200')}
+                  color={useColorModeValue('blackbelt.500', 'blackbelt.200')}
                 />
                 <Input
                   ml="2"
@@ -123,7 +123,7 @@ export default function Login() {
                       fontSize="24"
                       color={
                         revealPassword
-                          ? useColorModeValue('brand.500', 'brand.200')
+                          ? useColorModeValue('blackbelt.500', 'blackbelt.200')
                           : useColorModeValue('gray.400', 'gray.300')
                       }
                     />
@@ -141,13 +141,13 @@ export default function Login() {
             variant="link"
             fontWeight="regular"
             mt="2"
-            colorScheme="brand"
+            colorScheme="blackbelt"
             fontSize="smaller"
             alignSelf="end"
           >
             Esqueceu sua senha?
           </Button>
-          <Button type="submit" mt="16" size="lg" colorScheme="brand">
+          <Button type="submit" mt="16" size="lg" colorScheme="blackbelt">
             Entrar
           </Button>
         </Flex>

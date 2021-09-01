@@ -7,7 +7,7 @@ const config: ThemeConfig = {
 };
 
 const colors = {
-  brand: {
+  blackbelt: {
     200: '#7f7fd2',
     500: '#5252a4',
   },
