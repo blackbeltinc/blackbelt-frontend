@@ -36,7 +36,46 @@ export default class MyDocument extends Document {
           />
 
           {/* <!-- Startup Image  --> */}
-          <link href="meta/icon-320x480.png" rel="apple-touch-startup-image" />
+          <link
+            href="meta/splash-320x480.png"
+            rel="apple-touch-startup-image"
+            sizes="320x480"
+          />
+          <link
+            href="meta/splash-640x1136.png"
+            rel="apple-touch-startup-image"
+            sizes="640x1136"
+          />
+          <link
+            href="meta/splash-750x1134.png"
+            rel="apple-touch-startup-image"
+            sizes="750x1134"
+          />
+          <link
+            href="meta/splash-1125x2436.png"
+            rel="apple-touch-startup-image"
+            sizes="1125x2436"
+          />
+          <link
+            href="meta/splash-1242x2208.png"
+            rel="apple-touch-startup-image"
+            sizes="1242x2208"
+          />
+          <link
+            href="meta/splash-1536x2048.png"
+            rel="apple-touch-startup-image"
+            sizes="1536x2048"
+          />
+          <link
+            href="meta/splash-1668x2224.png"
+            rel="apple-touch-startup-image"
+            sizes="1668x2224"
+          />
+          <link
+            href="meta/splash-2048x2732.png"
+            rel="apple-touch-startup-image"
+            sizes="2048x2732"
+          />
 
           {/* <!-- Font  --> */}
           <link rel="preconnect" href="https://fonts.gstatic.com" />
