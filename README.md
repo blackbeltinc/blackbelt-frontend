@@ -1,5 +1,5 @@
 <h1 align="center">
-  BlackBelt
+<img src="public/images/logo-with-bg.png" width="50%" />
 </h1>
 
 <p align="center">

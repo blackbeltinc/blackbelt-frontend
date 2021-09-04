@@ -2,12 +2,12 @@ import { extendTheme, StyleProps, ThemeConfig } from '@chakra-ui/react';
 import { mode } from '@chakra-ui/theme-tools';
 
 const config: ThemeConfig = {
-  initialColorMode: 'light',
+  initialColorMode: 'dark',
   useSystemColorMode: false,
 };
 
 const colors = {
-  brand: {
+  blackbelt: {
     200: '#7f7fd2',
     500: '#5252a4',
   },

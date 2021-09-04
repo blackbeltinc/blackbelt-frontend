@@ -12,9 +12,11 @@
     "@typescript-eslint/consistent-type-definitions": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "@typescript-eslint/camelcase": "off",
-    "react/jsx-props-no-spreading": "off",
     "import/prefer-default-export": "off",
+    "react/jsx-props-no-spreading": "off",
     "react/react-in-jsx-scope": "off",
+    "react/require-default-props": "off",
+    "react/jsx-no-bind": "off",
     "max-len": [
       "warn",
       {
