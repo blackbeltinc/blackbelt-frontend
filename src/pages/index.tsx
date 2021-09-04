@@ -12,12 +12,14 @@ import {
 import { RiMoonFill, RiSunFill } from 'react-icons/ri';
 import { TiLockClosed, TiUser } from 'react-icons/ti';
 import { Input } from '../components/Input';
+import { PWAInstallPrompt } from '../components/PWAInstallPrompt';
 
 export default function Login() {
   const { toggleColorMode } = useColorMode();
 
   return (
     <Flex w="100vw" h="100vh" direction="column">
+      <PWAInstallPrompt />
       <Flex
         w="100vw"
         h="100vh"
