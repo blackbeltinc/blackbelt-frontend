@@ -5,7 +5,9 @@ import {
   Icon,
   IconButton,
   Image,
+  Link,
   Stack,
+  Text,
   useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react';
@@ -65,7 +67,7 @@ export default function Login() {
             />
             <Input
               id="password"
-              label="PASSWORD"
+              label="SENHA"
               inputType="password"
               icon={TiLockClosed}
               placeholder="digite sua senha"
@@ -85,6 +87,17 @@ export default function Login() {
             Entrar
           </Button>
         </Flex>
+        <Text mt="1.5rem">
+          Não possui uma conta?
+          <Link
+            href="/register"
+            ml="0.25rem"
+            fontWeight="bold"
+            color={useColorModeValue('blackbelt.500', 'blackbelt.200')}
+          >
+            Registre-se
+          </Link>
+        </Text>
       </Flex>
       <IconButton
         icon={
