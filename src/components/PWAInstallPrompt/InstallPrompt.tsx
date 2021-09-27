@@ -46,7 +46,7 @@ export function InstallPrompt() {
     <Modal isOpen onClose={handleOnClose} isCentered>
       <ModalOverlay />
       {iosInstallPrompt && (
-        <ModalContent>
+        <ModalContent maxW="80%">
           <ModalHeader>Deseja instalar?</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
