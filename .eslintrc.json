@@ -17,6 +17,7 @@
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "react/jsx-no-bind": "off",
+    "react/prop-types": "off",
     "no-console": "off",
     "max-len": [
       "warn",
