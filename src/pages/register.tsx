@@ -62,10 +62,11 @@ export default function Register() {
     register,
     handleSubmit,
     watch,
+    trigger,
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: yupResolver(registerFormSchema),
-    mode: 'all',
+    mode: 'onTouched',
   });
   const watchRole = watch('role');
 
@@ -214,13 +215,17 @@ export default function Register() {
                     </Button>
                     <Button
                       colorScheme="blackbelt"
-                      onClick={() => {
+                      onClick={async () => {
+                        await trigger('email');
+                        await trigger('password');
+                        await trigger('password_confirmation');
                         if (
                           !errors.password_confirmation &&
                           !errors.password &&
                           !errors.email
-                        )
+                        ) {
                           handleNextTab();
+                        }
                       }}
                       w="100%"
                       rightIcon={<IoChevronForward />}
