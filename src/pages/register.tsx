@@ -54,6 +54,7 @@ const registerFormSchema = yup.object({
   birthdate: yup
     .date()
     .required('O campo data de nascimento é obrigatório')
+    .typeError('O campo data de nascimento é obrigatório')
     .max(new Date(), 'Não é possível incluir uma data futura'),
 });
 
