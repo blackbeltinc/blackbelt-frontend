@@ -2,20 +2,17 @@ import {
   Button,
   Flex,
   Heading,
-  Icon,
-  IconButton,
   Image,
   Link,
   Stack,
   Text,
-  useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { RiMoonFill, RiSunFill } from 'react-icons/ri';
 import { TiLockClosed, TiUser } from 'react-icons/ti';
 import * as yup from 'yup';
+import { ColorModeToggle } from '../components/ColorModeToggle';
 import { Input } from '../components/Input';
 import { PWAInstallPrompt } from '../components/PWAInstallPrompt';
 
@@ -33,7 +30,6 @@ const loginFormSchema = yup.object({
 });
 
 export default function Login() {
-  const { toggleColorMode } = useColorMode();
   const {
     register,
     handleSubmit,
@@ -138,18 +134,7 @@ export default function Login() {
           </Link>
         </Text>
       </Flex>
-      <IconButton
-        icon={
-          <Icon as={useColorModeValue(RiMoonFill, RiSunFill)} fontSize="24" />
-        }
-        mt="auto"
-        ml="auto"
-        m="4"
-        variant="unstyled"
-        size="sm"
-        aria-label="Toggle color mode"
-        onClick={toggleColorMode}
-      />
+      <ColorModeToggle mt="auto" ml="auto" m="4" />
     </Flex>
   );
 }
