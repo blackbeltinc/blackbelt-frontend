@@ -201,14 +201,6 @@ export default function Register() {
                       colorScheme="blackbelt"
                       variant="outline"
                       onClick={handlePrevTab}
-                      color={useColorModeValue(
-                        'blackbelt.500',
-                        'blackbelt.200',
-                      )}
-                      borderColor={useColorModeValue(
-                        'blackbelt.500',
-                        'blackbelt.200',
-                      )}
                       leftIcon={<IoChevronBack />}
                     >
                       Anterior
@@ -262,14 +254,6 @@ export default function Register() {
                       w="100%"
                       colorScheme="blackbelt"
                       variant="outline"
-                      color={useColorModeValue(
-                        'blackbelt.500',
-                        'blackbelt.200',
-                      )}
-                      borderColor={useColorModeValue(
-                        'blackbelt.500',
-                        'blackbelt.200',
-                      )}
                       onClick={handlePrevTab}
                       leftIcon={<IoChevronBack />}
                     >
