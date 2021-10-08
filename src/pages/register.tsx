@@ -17,7 +17,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
 import { RiMoonFill, RiSunFill } from 'react-icons/ri';
@@ -27,6 +27,7 @@ import { Input } from '../components/Input';
 import { RadioGroup } from '../components/RadioGroup';
 
 type RegisterFormData = {
+  error_trigger: string; // workaround to react-hook-forms not validating correctly on first trigger call
   role: string;
   email: string;
   password: string;
@@ -36,6 +37,7 @@ type RegisterFormData = {
 };
 
 const registerFormSchema = yup.object({
+  error_trigger: yup.string(), // workaround to react-hook-forms not validating correctly on first trigger call
   role: yup.string().required(),
   email: yup
     .string()
@@ -69,6 +71,11 @@ export default function Register() {
     mode: 'onTouched',
   });
   const watchRole = watch('role');
+
+  // workaround to react-hook-forms not validating correctly on first trigger call
+  useEffect(() => {
+    trigger('error_trigger');
+  }, []);
 
   const handleRegister: SubmitHandler<RegisterFormData> = async (
     values,
@@ -208,9 +215,11 @@ export default function Register() {
                     <Button
                       colorScheme="blackbelt"
                       onClick={async () => {
-                        await trigger('email');
-                        await trigger('password');
-                        await trigger('password_confirmation');
+                        await trigger([
+                          'email',
+                          'password',
+                          'password_confirmation',
+                        ]);
                         if (
                           !errors.password_confirmation &&
                           !errors.password &&
@@ -281,36 +290,13 @@ export default function Register() {
                   </Box>
                   <ButtonGroup w="100%" mt="3rem">
                     <Button
-                      w="100%"
+                      w="calc(50% - 0.25rem)"
                       colorScheme="blackbelt"
                       variant="outline"
                       onClick={handlePrevTab}
-                      color={useColorModeValue(
-                        'blackbelt.500',
-                        'blackbelt.200',
-                      )}
-                      borderColor={useColorModeValue(
-                        'blackbelt.500',
-                        'blackbelt.200',
-                      )}
                       leftIcon={<IoChevronBack />}
                     >
                       Anterior
-                    </Button>
-                    <Button
-                      colorScheme="blackbelt"
-                      onClick={() => {
-                        if (
-                          !errors.password_confirmation &&
-                          !errors.password &&
-                          !errors.email
-                        )
-                          handleNextTab();
-                      }}
-                      w="100%"
-                      rightIcon={<IoChevronForward />}
-                    >
-                      Próximo
                     </Button>
                   </ButtonGroup>
                 </TabPanel>
