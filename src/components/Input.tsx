@@ -1,6 +1,7 @@
 import {
   Flex,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Icon,
   IconButton,
@@ -8,7 +9,8 @@ import {
   InputProps as ChakraInputProps,
   useColorModeValue,
 } from '@chakra-ui/react';
-import { useState } from 'react';
+import { forwardRef, ForwardRefRenderFunction, useState } from 'react';
+import { FieldError } from 'react-hook-form';
 import { IconType } from 'react-icons';
 import { AiFillEye, AiOutlineEye } from 'react-icons/ai';
 
@@ -17,16 +19,20 @@ interface InputProps extends ChakraInputProps {
   label?: string;
   inputType: string;
   icon?: IconType;
+  error?: FieldError;
 }
 
-export function Input({ id, label, inputType, icon, ...rest }: InputProps) {
+const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
+  { id, label, inputType, icon, error = null, ...rest },
+  ref,
+) => {
   const [revealPassword, setRevealPassword] = useState(false);
   function toggleRevealPassword() {
     setRevealPassword(!revealPassword);
   }
 
   return (
-    <FormControl id={id}>
+    <FormControl id={id} isInvalid={!!error}>
       {label && (
         <FormLabel
           fontWeight="bold"
@@ -53,6 +59,7 @@ export function Input({ id, label, inputType, icon, ...rest }: InputProps) {
         <ChakraInput
           ml="2"
           variant="unstyled"
+          ref={ref}
           type={
             // eslint-disable-next-line no-nested-ternary
             inputType === 'password'
@@ -84,6 +91,10 @@ export function Input({ id, label, inputType, icon, ...rest }: InputProps) {
           />
         )}
       </Flex>
+
+      {!!error && <FormErrorMessage>{error.message}</FormErrorMessage>}
     </FormControl>
   );
-}
+};
+
+export const Input = forwardRef(InputBase);

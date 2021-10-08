@@ -17,12 +17,14 @@
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "react/jsx-no-bind": "off",
+    "react/prop-types": "off",
+    "no-console": "off",
     "max-len": [
       "warn",
       {
         "code": 80,
         "tabWidth": 2,
-        "comments": 80,
+        "comments": 120,
         "ignoreComments": false,
         "ignoreTrailingComments": true,
         "ignoreUrls": true,

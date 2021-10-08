@@ -10,6 +10,7 @@ const colors = {
   blackbelt: {
     200: '#7f7fd2',
     500: '#5252a4',
+    600: '#5252a4',
   },
   gray: {
     50: '#fafafa', // light mode background
