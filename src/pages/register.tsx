@@ -5,24 +5,21 @@ import {
   Flex,
   FormControl,
   Heading,
-  Icon,
-  IconButton,
   Link,
   Stack,
   TabPanel,
   TabPanels,
   Tabs,
   Text,
-  useColorMode,
   useColorModeValue,
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
-import { RiMoonFill, RiSunFill } from 'react-icons/ri';
 import { TiLockClosed, TiUser } from 'react-icons/ti';
 import * as yup from 'yup';
+import { ColorModeToggle } from '../components/ColorModeToggle';
 import { Input } from '../components/Input';
 import { RadioGroup } from '../components/RadioGroup';
 
@@ -59,7 +56,6 @@ const registerFormSchema = yup.object({
 });
 
 export default function Register() {
-  const { toggleColorMode } = useColorMode();
   const [tabIndex, setTabIndex] = useState(0);
   const {
     register,
@@ -317,18 +313,7 @@ export default function Register() {
           </Link>
         </Text>
       </Flex>
-      <IconButton
-        icon={
-          <Icon as={useColorModeValue(RiMoonFill, RiSunFill)} fontSize="24" />
-        }
-        mt="auto"
-        ml="auto"
-        m="4"
-        variant="unstyled"
-        size="sm"
-        aria-label="Toggle color mode"
-        onClick={toggleColorMode}
-      />
+      <ColorModeToggle mt="auto" ml="auto" m="4" />
     </Flex>
   );
 }
