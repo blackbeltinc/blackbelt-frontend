@@ -1,6 +1,11 @@
-import { Stack } from '@chakra-ui/react';
+import { Stack, Button, Text, Icon } from '@chakra-ui/react';
 import { BiChalkboard } from 'react-icons/bi';
-import { RiContactsLine, RiDashboardLine } from 'react-icons/ri';
+import {
+  RiContactsLine,
+  RiDashboardLine,
+  RiLogoutCircleLine,
+} from 'react-icons/ri';
+import { signOut } from '../../contexts/AuthContext';
 import { NavLink } from './NavLink';
 import { NavSection } from './NavSection';
 
@@ -20,6 +25,14 @@ export function SidebarNav() {
           <NavLink href="/classes" icon={BiChalkboard}>
             Aulas
           </NavLink>
+        </NavSection>
+        <NavSection title="PERFIL">
+          <Button variant="link" onClick={signOut}>
+            <Icon as={RiLogoutCircleLine} fontSize="20" />
+            <Text ml="4" fontWeight="medium">
+              Sair
+            </Text>
+          </Button>
         </NavSection>
       </Stack>
     </>

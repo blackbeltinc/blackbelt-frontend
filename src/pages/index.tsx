@@ -9,12 +9,15 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useContext } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { TiLockClosed, TiUser } from 'react-icons/ti';
+import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import { ColorModeToggle } from '../components/ColorModeToggle';
 import { Input } from '../components/Input';
 import { PWAInstallPrompt } from '../components/PWAInstallPrompt';
+import { AuthContext } from '../contexts/AuthContext';
 
 type LoginFormData = {
   email: string;
@@ -30,6 +33,8 @@ const loginFormSchema = yup.object({
 });
 
 export default function Login() {
+  const { signIn } = useContext(AuthContext);
+
   const {
     register,
     handleSubmit,
@@ -40,7 +45,12 @@ export default function Login() {
 
   const handleLogin: SubmitHandler<LoginFormData> = async (values, event) => {
     event.preventDefault();
-    console.log(values);
+
+    try {
+      signIn(values);
+    } catch (err) {
+      toast.error(err.response.data);
+    }
   };
 
   return (
