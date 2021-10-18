@@ -14,14 +14,17 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
 import { TiLockClosed, TiUser } from 'react-icons/ti';
+import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import { ColorModeToggle } from '../components/ColorModeToggle';
 import { Input } from '../components/Input';
 import { RadioGroup } from '../components/RadioGroup';
+import { AuthContext } from '../contexts/AuthContext';
+import { api } from '../services/api';
 
 type RegisterFormData = {
   error_trigger: string; // workaround to react-hook-forms not validating correctly on first trigger call
@@ -29,7 +32,9 @@ type RegisterFormData = {
   email: string;
   password: string;
   password_confirmation: string;
-  name: string;
+  first_name: string;
+  last_name: string;
+  cpf: string;
   birthdate: Date;
 };
 
@@ -47,7 +52,13 @@ const registerFormSchema = yup.object({
   password_confirmation: yup
     .string()
     .oneOf([null, yup.ref('password')], 'As senhas não conferem.'),
-  name: yup.string().required('O campo nome é obrigatório.'),
+  first_name: yup.string().required('O campo primeiro nome é obrigatório.'),
+  last_name: yup.string().required('O campo ultimo nome é obrigatório.'),
+  cpf: yup
+    .string()
+    .required('O campo cpf é obrigatório.')
+    .min(11, 'Digite um CPF válido.')
+    .max(11, 'Digite um CPF válido.'),
   birthdate: yup
     .date()
     .required('O campo data de nascimento é obrigatório')
@@ -56,6 +67,7 @@ const registerFormSchema = yup.object({
 });
 
 export default function Register() {
+  const { signIn } = useContext(AuthContext);
   const [tabIndex, setTabIndex] = useState(0);
   const {
     register,
@@ -79,7 +91,15 @@ export default function Register() {
     event,
   ) => {
     event.preventDefault();
-    console.log(values);
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    const { password_confirmation, ...user } = values;
+    try {
+      await api.post('/register', user);
+      toast.success('Cadastro realizado com sucesso!');
+      signIn(user);
+    } catch (err) {
+      toast.error(err.response.data);
+    }
   };
 
   const handleTabChange = (index: number) => {
@@ -238,12 +258,12 @@ export default function Register() {
                   <Box minH="250px">
                     <Stack spacing="6">
                       <Input
-                        id="name"
-                        label="NOME"
+                        id="cpf"
+                        label="CPF"
                         inputType="text"
-                        placeholder="digite seu nome completo"
-                        error={errors.name}
-                        {...register('name')}
+                        placeholder="***.***.***-**"
+                        error={errors.cpf}
+                        {...register('cpf')}
                       />
                       <Input
                         id="birthdate"
@@ -252,6 +272,58 @@ export default function Register() {
                         placeholder="DD/MM/AAAA"
                         error={errors.birthdate}
                         {...register('birthdate')}
+                      />
+                    </Stack>
+                  </Box>
+                  <ButtonGroup w="100%" mt="3rem">
+                    <Button
+                      w="100%"
+                      colorScheme="blackbelt"
+                      variant="outline"
+                      onClick={handlePrevTab}
+                      leftIcon={<IoChevronBack />}
+                    >
+                      Anterior
+                    </Button>
+                    <Button
+                      colorScheme="blackbelt"
+                      onClick={async () => {
+                        await trigger([
+                          'cpf',
+                          'birthdate',
+                          'password_confirmation',
+                        ]);
+                        if (!errors.cpf && !errors.birthdate) {
+                          handleNextTab();
+                        }
+                      }}
+                      w="100%"
+                      rightIcon={<IoChevronForward />}
+                    >
+                      Próximo
+                    </Button>
+                  </ButtonGroup>
+                </TabPanel>
+              )}
+              {watchRole === 'Mestre' && (
+                <TabPanel px="0px">
+                  <Box minH="250px">
+                    <Stack spacing="6">
+                      <Input
+                        id="first_name"
+                        label="PRIMEIRO NOME"
+                        inputType="text"
+                        placeholder="digite seu nome"
+                        error={errors.first_name}
+                        {...register('first_name')}
+                      />
+                      <Input
+                        id="last_name"
+                        label="ULTIMO NOME"
+                        inputType="text"
+                        placeholder="digite seu ultimo sobrenome"
+                        error={errors.last_name}
+                        {...register('last_name')}
                       />
                     </Stack>
                   </Box>
