@@ -265,6 +265,7 @@ export default function Register() {
                         id="cpf"
                         label="CPF"
                         inputType="text"
+                        placeholder="000.000.000-00"
                         mask="999.999.999-99"
                         maskChar={null}
                         error={errors.cpf}
