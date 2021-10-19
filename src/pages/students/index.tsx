@@ -16,7 +16,7 @@ import {
   useBreakpointValue,
 } from '@chakra-ui/react';
 import Link from 'next/link';
-import { RiAddLine, RiPencilLine } from 'react-icons/ri';
+import { RiAddLine } from 'react-icons/ri';
 import { MainContainer } from '../../components/MainContainer';
 import { useStudents } from '../../hooks/useStudents';
 import { withSSRAuth } from '../../utils/withSSRAuth';
@@ -58,12 +58,14 @@ export default function StudentList() {
         <Flex justify="center">Falha ao obter dados dos usuários.</Flex>
       ) : (
         <>
-          <Table colorScheme="whiteAlpha">
+          <Table>
             <Thead>
               <Tr>
-                <Th>Usuário</Th>
-                {isWideVersion && <Th>Data de Nascimento</Th>}
-                {isWideVersion && <Th width="8" />}
+                <Th>Aluno</Th>
+                {isWideVersion && <Th>Email</Th>}
+                {isWideVersion && <Th>Telefone</Th>}
+                <Th>Faixa</Th>
+                {isWideVersion && <Th>Nível</Th>}
               </Tr>
             </Thead>
             <Tbody>
@@ -79,20 +81,10 @@ export default function StudentList() {
                       </Text>
                     </Box>
                   </Td>
-                  {isWideVersion && <Td>{student.birthdate}</Td>}
-                  {isWideVersion && (
-                    <Td>
-                      <Button
-                        as="a"
-                        size="sm"
-                        fontSize="sm"
-                        colorScheme="blackbelt"
-                        leftIcon={<Icon as={RiPencilLine} />}
-                      >
-                        Editar
-                      </Button>
-                    </Td>
-                  )}
+                  {isWideVersion && <Td>{student.email}</Td>}
+                  {isWideVersion && <Td>{student.phone}</Td>}
+                  <Td>{student.belt}</Td>
+                  {isWideVersion && <Td>{student.level}</Td>}
                 </Tr>
               ))}
             </Tbody>
