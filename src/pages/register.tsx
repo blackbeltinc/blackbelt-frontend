@@ -52,6 +52,7 @@ const registerFormSchema = yup.object({
     .min(6, 'A senha deve conter ao menos 6 caracteres.'),
   password_confirmation: yup
     .string()
+    .required('O campo confirmação de senha é obrigatório.')
     .oneOf([null, yup.ref('password')], 'As senhas não conferem.'),
   first_name: yup.string().required('O campo primeiro nome é obrigatório.'),
   last_name: yup.string().required('O campo ultimo nome é obrigatório.'),
