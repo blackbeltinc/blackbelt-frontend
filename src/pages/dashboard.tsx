@@ -1,11 +1,11 @@
-import { Text } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
 import { MainContainer } from '../components/MainContainer';
 import { withSSRAuth } from '../utils/withSSRAuth';
 
 export default function Dashboard() {
   return (
     <MainContainer>
-      <Text as="h1">Dashboard</Text>
+      <Heading size="lg">Dashboard</Heading>
     </MainContainer>
   );
 }

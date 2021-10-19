@@ -1,13 +1,14 @@
-import { Flex, useColorModeValue } from '@chakra-ui/react';
+import { Box, Flex, useColorModeValue } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
 
 interface MainContainerProps {
   children: ReactNode;
+  as?: string;
 }
 
-export function MainContainer({ children }: MainContainerProps) {
+export function MainContainer({ children, as }: MainContainerProps) {
   return (
     <Flex direction="column" h="100vh">
       <Header />
@@ -20,16 +21,17 @@ export function MainContainer({ children }: MainContainerProps) {
         px={['0', '6']}
       >
         <Sidebar />
-        <Flex
+        <Box
           bg={useColorModeValue('gray.75', 'gray.700')}
-          h={['calc(100vh - 6rem)', 'calc(100vh - 8rem)']}
+          minH={['calc(100vh - 6rem)', 'calc(100vh - 8rem)']}
           w="100%"
           borderTopRadius="2xl"
           borderBottomRadius={[0, '2xl']}
           p="2rem"
+          {...as}
         >
           {children}
-        </Flex>
+        </Box>
       </Flex>
     </Flex>
   );
