@@ -18,6 +18,7 @@ import { useContext, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
 import { TiLockClosed, TiUser } from 'react-icons/ti';
+import InputMask from 'react-input-mask';
 import { toast } from 'react-toastify';
 import * as yup from 'yup';
 import { ColorModeToggle } from '../components/ColorModeToggle';
@@ -59,8 +60,8 @@ const registerFormSchema = yup.object({
   cpf: yup
     .string()
     .required('O campo cpf é obrigatório.')
-    .min(11, 'Digite um CPF válido.')
-    .max(11, 'Digite um CPF válido.'),
+    .min(14, 'Digite um CPF válido.')
+    .max(14, 'Digite um CPF válido.'),
   birthdate: yup
     .date()
     .required('O campo data de nascimento é obrigatório')
@@ -260,10 +261,12 @@ export default function Register() {
                   <Box minH="250px">
                     <Stack spacing="6">
                       <Input
+                        as={InputMask}
                         id="cpf"
                         label="CPF"
                         inputType="text"
-                        placeholder="***.***.***-**"
+                        mask="999.999.999-99"
+                        maskChar={null}
                         error={errors.cpf}
                         {...register('cpf')}
                       />
