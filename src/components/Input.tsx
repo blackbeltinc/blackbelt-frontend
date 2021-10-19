@@ -48,7 +48,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         alignSelf="center"
         borderBottom="1px"
         p="1"
-        fontSize="16px"
+        fontSize="1rem"
         borderColor={useColorModeValue('gray.400', 'gray.300')}
       >
         {icon && (

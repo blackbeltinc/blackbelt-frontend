@@ -1,11 +1,11 @@
-import { Text } from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
 import { MainContainer } from '../components/MainContainer';
 import { withSSRAuth } from '../utils/withSSRAuth';
 
 export default function Classes() {
   return (
     <MainContainer>
-      <Text as="h1">Aulas</Text>
+      <Heading size="lg">Aulas</Heading>
     </MainContainer>
   );
 }
