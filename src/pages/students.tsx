@@ -1,5 +1,6 @@
 import { Text } from '@chakra-ui/react';
 import { MainContainer } from '../components/MainContainer';
+import { withSSRAuth } from '../utils/withSSRAuth';
 
 export default function Students() {
   return (
@@ -8,3 +9,9 @@ export default function Students() {
     </MainContainer>
   );
 }
+
+export const getServerSideProps = withSSRAuth(async () => {
+  return {
+    props: {},
+  };
+});
