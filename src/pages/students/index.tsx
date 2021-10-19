@@ -62,7 +62,6 @@ export default function StudentList() {
             <Thead>
               <Tr>
                 <Th>Aluno</Th>
-                {isWideVersion && <Th>Email</Th>}
                 {isWideVersion && <Th>Telefone</Th>}
                 <Th>Faixa</Th>
                 {isWideVersion && <Th>Nível</Th>}
@@ -81,7 +80,6 @@ export default function StudentList() {
                       </Text>
                     </Box>
                   </Td>
-                  {isWideVersion && <Td>{student.email}</Td>}
                   {isWideVersion && <Td>{student.phone}</Td>}
                   <Td>{student.belt}</Td>
                   {isWideVersion && <Td>{student.level}</Td>}
