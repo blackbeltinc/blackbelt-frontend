@@ -31,8 +31,8 @@ export function Header() {
       {isWideVersion ? (
         <Image
           src={useColorModeValue(
-            'images/logo-light.svg',
-            'images/logo-dark.svg',
+            '/images/logo-light.svg',
+            '/images/logo-dark.svg',
           )}
           alt="BlackBelt"
           h="2.5rem"
@@ -42,8 +42,8 @@ export function Header() {
           icon={
             <Image
               src={useColorModeValue(
-                'images/icon-light.svg',
-                'images/icon-dark.svg',
+                '/images/icon-light.svg',
+                '/images/icon-dark.svg',
               )}
               alt="BlackBelt"
               mb="16"
