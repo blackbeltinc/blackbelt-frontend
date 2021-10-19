@@ -11,7 +11,7 @@ export function withSSRAuth<P>(fn: GetServerSideProps<P>): GetServerSideProps {
   ): Promise<GetServerSidePropsResult<P>> => {
     const cookies = parseCookies(ctx);
 
-    if (!cookies['nextauth.token']) {
+    if (!cookies['blackbelt.token']) {
       return {
         redirect: {
           destination: '/',

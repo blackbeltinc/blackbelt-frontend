@@ -36,8 +36,8 @@ type AuthProviderProps = {
 };
 
 export function signOut() {
-  destroyCookie(undefined, 'nextauth.token');
-  destroyCookie(undefined, 'nextauth.userid');
+  destroyCookie(undefined, 'blackbelt.token');
+  destroyCookie(undefined, 'blackbelt.userid');
 
   Router.push('/');
 }
@@ -50,7 +50,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
   useEffect(() => {
     async function getLoggedUser() {
-      const { 'nextauth.userid': userId } = parseCookies();
+      const { 'blackbelt.userid': userId } = parseCookies();
       if (userId) {
         await api
           .get(`/users/${userId}`)
@@ -70,12 +70,12 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       const { accessToken, user } = response.data;
 
-      setCookie(undefined, 'nextauth.token', accessToken, {
+      setCookie(undefined, 'blackbelt.token', accessToken, {
         maxAge: 60 * 60 * 24 * 30, // 30 days
         path: '/',
         sameSite: true,
       });
-      setCookie(undefined, 'nextauth.userid', String(user.id), {
+      setCookie(undefined, 'blackbelt.userid', String(user.id), {
         maxAge: 60 * 60 * 24 * 30, // 30 days
         path: '/',
         sameSite: true,
