@@ -25,6 +25,7 @@ import { Input } from '../components/Input';
 import { RadioGroup } from '../components/RadioGroup';
 import { AuthContext } from '../contexts/AuthContext';
 import { api } from '../services/api';
+import { withSSRGuest } from '../utils/withSSRGuest';
 
 type RegisterFormData = {
   error_trigger: string; // workaround to react-hook-forms not validating correctly on first trigger call
@@ -389,3 +390,9 @@ export default function Register() {
     </Flex>
   );
 }
+
+export const getServerSideProps = withSSRGuest(async () => {
+  return {
+    props: {},
+  };
+});

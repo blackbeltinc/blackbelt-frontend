@@ -18,6 +18,7 @@ import { ColorModeToggle } from '../components/ColorModeToggle';
 import { Input } from '../components/Input';
 import { PWAInstallPrompt } from '../components/PWAInstallPrompt';
 import { AuthContext } from '../contexts/AuthContext';
+import { withSSRGuest } from '../utils/withSSRGuest';
 
 type LoginFormData = {
   email: string;
@@ -148,3 +149,9 @@ export default function Login() {
     </Flex>
   );
 }
+
+export const getServerSideProps = withSSRGuest(async () => {
+  return {
+    props: {},
+  };
+});

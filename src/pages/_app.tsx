@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <AuthProvider>
         <SidebarDrawerProvider>
           <Component {...pageProps} />
-          <ToastContainer />
+          <ToastContainer autoClose={3000} />
         </SidebarDrawerProvider>
       </AuthProvider>
     </Chakra>
