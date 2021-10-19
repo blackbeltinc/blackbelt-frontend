@@ -73,8 +73,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
       setCookie(undefined, 'nextauth.token', accessToken, {
         maxAge: 60 * 60 * 24 * 30, // 30 days
         path: '/',
+        sameSite: true,
       });
-      setCookie(undefined, 'nextauth.userid', String(user.id));
+      setCookie(undefined, 'nextauth.userid', String(user.id), {
+        maxAge: 60 * 60 * 24 * 30, // 30 days
+        path: '/',
+        sameSite: true,
+      });
       setUser(user);
 
       Router.push('/dashboard');
