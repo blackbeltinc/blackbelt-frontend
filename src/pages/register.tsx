@@ -271,7 +271,6 @@ export default function Register() {
                         id="birthdate"
                         label="DATA DE NASCIMENTO"
                         inputType="date"
-                        placeholder="DD/MM/AAAA"
                         error={errors.birthdate}
                         {...register('birthdate')}
                       />
