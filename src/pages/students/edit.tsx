@@ -12,6 +12,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { yupResolver } from '@hookform/resolvers/yup';
+import dayjs from 'dayjs';
 import Link from 'next/link';
 import Router from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -75,7 +76,6 @@ export default function StudentEdit({ student }: StudentEditProps) {
   } = useForm({
     resolver: yupResolver(studentFormSchema),
     mode: 'onTouched',
-    defaultValues: student,
   });
 
   const handleCreate: SubmitHandler<StudentFormData> = async (
@@ -107,6 +107,7 @@ export default function StudentEdit({ student }: StudentEditProps) {
               placeholder="digite o primeiro nome"
               error={errors.first_name}
               {...register('first_name')}
+              defaultValue={student.first_name}
             />
             <Input
               id="last_name"
@@ -115,6 +116,7 @@ export default function StudentEdit({ student }: StudentEditProps) {
               placeholder="digite o ultimo sobrenome"
               error={errors.last_name}
               {...register('last_name')}
+              defaultValue={student.last_name}
             />
           </SimpleGrid>
           <SimpleGrid minChildWidth="240px" spacing={['6', '8']} w="100%">
@@ -125,21 +127,19 @@ export default function StudentEdit({ student }: StudentEditProps) {
               placeholder="digite o email"
               error={errors.email}
               {...register('email')}
+              defaultValue={student.email}
             />
             <Input
               as={InputMask}
               id="cpf"
               label="CPF"
               inputType="text"
-              placeholder={student.cpf}
-              _placeholder={{
-                color: useColorModeValue('gray.600', 'gray.50'),
-                opacity: '100%',
-              }}
+              placeholder="000.000.000-00"
               mask="999.999.999-99"
               maskChar={null}
               error={errors.cpf}
               {...register('cpf')}
+              defaultValue={student.cpf}
             />
           </SimpleGrid>
           <SimpleGrid minChildWidth="240px" spacing={['6', '8']} w="100%">
@@ -148,15 +148,12 @@ export default function StudentEdit({ student }: StudentEditProps) {
               id="phone"
               label="TELEFONE"
               inputType="text"
-              placeholder={student.phone}
-              _placeholder={{
-                color: useColorModeValue('gray.600', 'gray.50'),
-                opacity: '100%',
-              }}
+              placeholder="(00) 00000-0000"
               mask="(99) 99999-9999"
               maskChar={null}
               error={errors.phone}
               {...register('phone')}
+              defaultValue={student.phone}
             />
             <Input
               id="birthdate"
@@ -164,6 +161,7 @@ export default function StudentEdit({ student }: StudentEditProps) {
               inputType="date"
               error={errors.birthdate}
               {...register('birthdate')}
+              defaultValue={dayjs(student.birthdate).format('YYYY-MM-DD')}
             />
           </SimpleGrid>
           <SimpleGrid minChildWidth="240px" spacing={['6', '8']} w="100%">
@@ -180,6 +178,7 @@ export default function StudentEdit({ student }: StudentEditProps) {
                 placeholder="Selecione a Faixa"
                 error={errors.belt}
                 {...register('belt')}
+                defaultValue={student.belt}
               >
                 <option value="Branca">Branca</option>
                 <option value="Cinza e Branca">Cinza e Branca</option>
@@ -209,6 +208,7 @@ export default function StudentEdit({ student }: StudentEditProps) {
                 placeholder="Selecione o grau"
                 error={errors.level}
                 {...register('level')}
+                defaultValue={student.level}
               >
                 <option value={1}>1</option>
                 <option value={2}>2</option>
