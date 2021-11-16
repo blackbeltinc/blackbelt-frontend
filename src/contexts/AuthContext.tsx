@@ -82,7 +82,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       });
       setUser(user);
 
-      Router.push('/dashboard');
+      window.location.reload();
     } catch (err) {
       toast.error(err.response.data);
     }
