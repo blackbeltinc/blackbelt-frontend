@@ -95,7 +95,7 @@ export default function StudentEdit({ student }: StudentEditProps) {
   return (
     <MainContainer>
       <Flex mb="8" justify="space-between" w="100%">
-        <Heading size="lg">Cadastrar Aluno</Heading>
+        <Heading size="lg">Editar Aluno</Heading>
       </Flex>
       <Box w="100%" as="form" onSubmit={handleSubmit(handleCreate)}>
         <Stack spacing={['6', '8']}>
