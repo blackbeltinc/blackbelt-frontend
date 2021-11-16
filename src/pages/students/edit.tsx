@@ -239,7 +239,7 @@ export default function StudentEdit({ student }: StudentEditProps) {
             colorScheme="blackbelt"
             w={['calc(50% - 0.25rem)', '8rem']}
           >
-            Cadastrar
+            Salvar
           </Button>
         </ButtonGroup>
       </Box>
