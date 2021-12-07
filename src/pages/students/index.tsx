@@ -92,7 +92,7 @@ export default function StudentList() {
                   onClick={() => {
                     onView(student.id);
                   }}
-                  aria-label="Editar"
+                  aria-label="Visualizar"
                   colorScheme="gray"
                   size="sm"
                 />

@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import {
   Avatar,
   Button,
@@ -6,61 +7,64 @@ import {
   Heading,
   Icon,
   IconButton,
+  Link,
+  Spinner,
   Table,
+  Tag,
   Tbody,
+  Td,
   Text,
   Th,
+  Thead,
   Tr,
   useBreakpointValue,
   useColorModeValue,
 } from '@chakra-ui/react';
 import dayjs from 'dayjs';
-import Link from 'next/link';
 import router from 'next/router';
 import { FiEdit } from 'react-icons/fi';
 import { IoArrowBack, IoTrashOutline } from 'react-icons/io5';
 import { toast } from 'react-toastify';
 import { MainContainer } from '../../components/MainContainer';
+import { useStudents } from '../../hooks/useStudents';
 import { setupApiClient } from '../../services/api';
 import { withSSRAuth } from '../../utils/withSSRAuth';
 
-type Student = {
+type Class = {
   id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  cpf: string;
-  phone: string;
-  birthdate: Date;
-  belt: string;
-  level: number;
+  master_id: number;
+  date: Date;
+  students_id: number[];
+  description: string;
 };
 
-type ProfileProps = {
-  student: Student;
+type ClassProps = {
+  jclass: Class;
 };
 
-export default function StudentProfile({ student }: ProfileProps) {
+export default function ClassView({ jclass }: ClassProps) {
   const isWideVersion = useBreakpointValue({
     base: false,
     md: true,
   });
 
+  const { data, isLoading, error } = useStudents();
+
   function onEdit() {
-    router.push({ pathname: '/students/edit', query: { id: student.id } });
+    router.push({ pathname: '/classes/edit', query: { id: jclass.id } });
   }
 
   async function onRemove() {
     try {
       if (
         window.confirm(
-          'Tem certeza que deseja remover esse aluno? Essa ação é irreversível.',
+          'Tem certeza que deseja remover essa aula? Essa ação é irreversível.',
         )
       ) {
         const api = setupApiClient();
-        await api.delete(`/students/${student.id}`);
-        toast.success('Aluno removido com sucesso.');
-        router.push('/students');
+        await api.delete(`/classes/${jclass.id}`);
+        toast.success('Aula removida com sucesso.');
+        router.push('/classes');
       }
     } catch (err) {
       toast.error(err.response.data.message);
@@ -70,9 +74,11 @@ export default function StudentProfile({ student }: ProfileProps) {
   return (
     <MainContainer>
       <Flex mb="8" justify="space-between" w="100%">
-        <Heading size="lg">Perfil do Aluno</Heading>
+        <Heading size="lg">
+          Aula - {dayjs(jclass.date).format('DD/MM/YYYY HH:mm')}
+        </Heading>
         <ButtonGroup>
-          <Link href="/students" passHref>
+          <Link href="/classes" passHref>
             {isWideVersion ? (
               <Button
                 as="a"
@@ -112,44 +118,59 @@ export default function StudentProfile({ student }: ProfileProps) {
         </ButtonGroup>
       </Flex>
       <Flex direction="column" align="center">
-        <Avatar
-          size="2xl"
-          name={`${student.first_name} ${student.last_name}`}
-          bg={useColorModeValue('blackbelt.500', 'blackbelt.200')}
-          color={useColorModeValue('gray.50', 'gray.800')}
-          mb="1.5rem"
-        />
-        <Text fontSize="xl" mb="2rem">
-          {student.first_name} {student.last_name}
-        </Text>
-        <Table>
-          <Tbody>
-            <Tr>
-              <Th>FAIXA</Th>
-              <Th>{student.belt}</Th>
-            </Tr>
-            <Tr>
-              <Th>GRAU</Th>
-              <Th>{student.level}</Th>
-            </Tr>
-            <Tr>
-              <Th>CPF</Th>
-              <Th>{student.cpf}</Th>
-            </Tr>
-            <Tr>
-              <Th>TELEFONE</Th>
-              <Th>{student.phone}</Th>
-            </Tr>
-            <Tr>
-              <Th>EMAIl</Th>
-              <Th>{student.email}</Th>
-            </Tr>
-            <Tr>
-              <Th>DATA DE NASCIMENTO</Th>
-              <Th>{dayjs(student.birthdate).format('DD/MM/YYYY')}</Th>
-            </Tr>
-          </Tbody>
-        </Table>
+        <Flex w="100%" mb="2rem">
+          <Text as="span" mr="auto">
+            <Text as="span" fontWeight="bold" mr="0.25rem">
+              Descrição:
+            </Text>
+            {jclass.description}
+          </Text>
+        </Flex>
+        {isLoading ? (
+          <Flex justify="center">
+            <Spinner />
+          </Flex>
+        ) : error ? (
+          <Flex justify="center">Falha ao obter dados dos usuários.</Flex>
+        ) : (
+          <Table size="sm">
+            <Thead>
+              <Th>Aluno</Th>
+              <Th isNumeric />
+            </Thead>
+            <Tbody>
+              {data.map((student) => (
+                <Tr>
+                  <Td>
+                    <Flex align="center">
+                      <Avatar
+                        size="sm"
+                        name={`${student.first_name} ${student.last_name}`}
+                        bg={useColorModeValue('blackbelt.500', 'blackbelt.200')}
+                        color={useColorModeValue('gray.50', 'gray.800')}
+                        mr="0.5rem"
+                      />
+                      <Text>
+                        {student.first_name} {student.last_name}
+                      </Text>
+                    </Flex>
+                  </Td>
+                  <Td isNumeric>
+                    {jclass.students_id.includes(student.id) ? (
+                      <Tag variant="solid" colorScheme="teal">
+                        Presente
+                      </Tag>
+                    ) : (
+                      <Tag variant="solid" colorScheme="red">
+                        Ausente
+                      </Tag>
+                    )}
+                  </Td>
+                </Tr>
+              ))}
+            </Tbody>
+          </Table>
+        )}
         {isWideVersion ? (
           <Button
             variant="outline"
@@ -160,7 +181,7 @@ export default function StudentProfile({ student }: ProfileProps) {
             leftIcon={<Icon as={IoTrashOutline} />}
             onClick={onRemove}
           >
-            Remover Aluno
+            Remover Aula
           </Button>
         ) : (
           <IconButton
@@ -180,12 +201,12 @@ export default function StudentProfile({ student }: ProfileProps) {
 }
 
 export const getServerSideProps = withSSRAuth(async (ctx) => {
-  const studentId = ctx.query.id;
+  const classId = ctx.query.id;
   const api = setupApiClient(ctx);
-  const response = await api.get(`/students/${studentId}`);
-  const student = response.data;
+  const response = await api.get(`/classes/${classId}`);
+  const jclass = response.data;
 
   return {
-    props: { student },
+    props: { jclass },
   };
 });
