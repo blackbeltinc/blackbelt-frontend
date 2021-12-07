@@ -165,7 +165,7 @@ export default function StudentProfile({ student }: ProfileProps) {
         ) : (
           <IconButton
             icon={<Icon as={IoTrashOutline} fontSize="xl" />}
-            aria-label="Editar"
+            aria-label="Remover"
             variant="outline"
             colorScheme="red"
             size="sm"
