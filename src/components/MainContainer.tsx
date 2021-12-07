@@ -29,6 +29,7 @@ export function MainContainer({ children, as }: MainContainerProps) {
           borderBottomRadius={[0, '2xl']}
           p="2rem"
           {...as}
+          mb={[0, '2rem']}
         >
           {children}
         </Box>
