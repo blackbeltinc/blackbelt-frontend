@@ -14,7 +14,7 @@ export function withSSRGuest<P>(fn: GetServerSideProps<P>): GetServerSideProps {
     if (cookies['blackbelt.token']) {
       return {
         redirect: {
-          destination: '/students',
+          destination: '/dashboard',
           permanent: false,
         },
       };
