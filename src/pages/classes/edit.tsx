@@ -89,8 +89,8 @@ export default function ClassEditForm({ jclass }: ClassEditProps) {
         students_id: students,
       };
       await api.put(`/classes/${jclass.id}`, newClass);
-      toast.success('Aula criada com sucesso!');
-      Router.push('/classes');
+      toast.success('Aula atualizada com sucesso!');
+      Router.push(`/classes/view?id=${jclass.id}`);
     } catch (err) {
       toast.error(err.response.data);
     }
