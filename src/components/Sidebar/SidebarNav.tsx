@@ -26,6 +26,11 @@ export function SidebarNav() {
             Aulas
           </NavLink>
         </NavSection>
+        <NavSection title="CAMPEONATOS">
+          <NavLink href="/classes" icon={BiChalkboard}>
+            Campeonatos
+          </NavLink>
+        </NavSection>
         <NavSection title="PERFIL">
           <Button variant="link" onClick={signOut}>
             <Icon as={RiLogoutCircleLine} fontSize="20" />
